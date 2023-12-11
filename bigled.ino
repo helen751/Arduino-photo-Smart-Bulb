@@ -1,5 +1,6 @@
 
 int relay = 7;
+ldr = A0;
 void setup() {
   // put your setup code here, to run once:
   pinMode(relay, OUTPUT);
@@ -8,8 +9,13 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-digitalWrite(relay, HIGH);
-delay(8000);
-digitalWrite(relay, LOW);
-delay(8000);
+  ldr_value = analogRead(ldr)/4;
+
+  if(ldr_value < 100){
+    digitalWrite(relay, LOW);
+  }
+  else{
+    digitalWrite(relay, HIGH);
+  }
+  delay(2000);
 }
